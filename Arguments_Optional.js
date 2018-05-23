@@ -43,3 +43,113 @@ function addTogether() {
 
 // test here
 addTogether(2,3);
+
+__________
+
+function addTogether() {
+    var numOne = arguments[0];
+    if (typeof(numOne) !== 'number') {
+        return undefined;
+    }
+    if (arguments.length === 2) {
+        if (typeof(arguments[1]) === 'number') {
+            return numOne + arguments[1];
+        }
+        return undefined;
+    }
+
+    return function() {
+        if (typeof(arguments[0]) === 'number') {
+            return numOne + arguments[0];
+        }
+        return undefined;
+    };
+}
+
+addTogether(2,3);
+
+________
+
+
+function addTogether() {
+    var numOne = arguments[0];
+    if (typeof(numOne) !== 'number') {
+        return undefined;
+    }
+    if (arguments.length === 2) {
+        if (typeof(arguments[1]) === 'number') {
+            return numOne + arguments[1];
+        }
+        return undefined;
+    }
+
+    return function() {
+        return typeof(arguments[0]) === 'number' ? numOne + arguments[0] : undefined;
+    };
+}
+
+addTogether(2,3);
+
+______
+
+
+function addTogether() {
+    var numOne = arguments[0];
+    if (typeof(numOne) !== 'number') {
+        return undefined;
+    }
+    if (arguments.length === 2) {
+        return typeof(arguments[1]) === 'number' ? numOne + arguments[1] : undefined;
+    }
+
+    return function() {
+        return typeof(arguments[0]) === 'number' ? numOne + arguments[0] : undefined;
+    };
+}
+
+addTogether(2,3);
+
+____
+
+
+function addTogether() {
+    var numOne = arguments[0];
+    function addTwo(numTwo) {
+        return typeof(numTwo) === 'number' ? numOne + numTwo : undefined;
+    }
+    if (typeof(numOne) !== 'number') {
+        return undefined;
+    }
+    if (arguments.length === 2) {
+        return addTwo(arguments[1]);
+    }
+
+    return addTwo;
+}
+
+addTogether(2,3);
+
+____
+
+
+function addTogether() {
+    var numOne = arguments[0];
+    function addTwo(numTwo) {
+        return typeof(numTwo) === 'number' ? numOne + numTwo : undefined;
+    }
+    return typeof(numOne) !== 'number' ? undefined : (arguments.length === 2 ? addTwo(arguments[1]) : addTwo);
+}
+
+addTogether(2,3);
+
+// if 2 arguments add them together
+// must be numbers
+// if 1 argument send function back to get the second item
+
+// if 2 arguments add them together
+// must be numbers
+// if 1 argument send function back to get the second item
+
+// if 2 arguments add them together
+// must be numbers
+// if 1 argument send function back to get the second item
